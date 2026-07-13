@@ -1,0 +1,20 @@
+schema: spec-driven
+
+context: |
+  專案：咖哩食堂（Curry Diner）餐廳品牌介紹網頁 — 前台單頁式落地頁。
+  來源：Claude Design 產出的 .dc.html 原型，轉為獨立靜態 HTML（index.html / review-kit/features/landing/front.html）。
+  技術：純靜態 HTML + CSS（無框架、無建置步驟）；Web Fonts（Shippori Mincho / Noto Sans TC / Zen Kaku Gothic New）。
+  部署：GitHub Pages（repo smallwhite-chen/curry-diner，main/root），透過 github-deploy skill。
+  評審：以 prototype-kit 打包成評審套件（切換列＋規格抽屜），版本號寫入 rk-config，目前 v1.0.1。
+  現況：頁面為內容展示頁，無使用者輸入欄位；圖片為 CSS 佔位；規格中有 15 條 ⚠️ 待確認（缺設計意圖）。
+  慣例：所有路徑相對化；品牌色只存在於原型內，評審外殼維持中性識別。
+
+# Per-artifact rules (optional)
+# Add custom rules for specific artifacts.
+# Example:
+#   rules:
+#     proposal:
+#       - Keep proposals under 500 words
+#       - Always include a "Non-goals" section
+#     tasks:
+#       - Break tasks into chunks of max 2 hours
