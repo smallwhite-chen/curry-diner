@@ -1,0 +1,92 @@
+# reservation Specification
+
+## Purpose
+TBD - created by archiving change add-online-reservation. Update Purpose after archive.
+## Requirements
+### Requirement: 訂位入口
+導覽列 SHALL 提供「我要訂位」入口，點擊後開啟訂位視窗（modal）。
+
+#### Scenario: 開啟訂位視窗
+- **WHEN** 訪客點擊導覽列「我要訂位」
+- **THEN** 顯示訂位 modal，並停在第一步（選擇日期）
+
+### Requirement: 三步驟訂位流程
+訂位 SHALL 以三步驟進行——① 選日期/時段/人數 ② 填聯絡資料 ③ 確認送出，並以步驟指示器顯示目前進度。
+
+#### Scenario: 步驟推進
+- **WHEN** 訪客完成當前步驟的必要輸入並按「下一步」
+- **THEN** 進入下一步，步驟指示器更新為對應狀態
+
+#### Scenario: 回上一步
+- **WHEN** 訪客在第二或第三步按「上一步」
+- **THEN** 回到前一步且已填資料保留
+
+### Requirement: 日期選擇
+第一步 SHALL 提供月曆選日期：可切換月份；過去日期不可選；每週三為公休不可選並以刪除線標示；今日以標記顯示。
+
+#### Scenario: 過去日期不可選
+- **WHEN** 月曆顯示今日之前的日期
+- **THEN** 該日期為禁用狀態，無法選取
+
+#### Scenario: 週三公休
+- **WHEN** 訪客檢視任一週三
+- **THEN** 該日以刪除線標示且不可選取
+
+### Requirement: 可訂時段與空狀態
+選定日期後 SHALL 顯示該日可訂時段，已滿時段標示為不可選；未選日期或當日公休時顯示對應空狀態文字。
+
+#### Scenario: 未選日期
+- **WHEN** 訪客尚未選擇日期
+- **THEN** 時段區顯示「請先於左側選擇日期」
+
+#### Scenario: 公休日無時段
+- **WHEN** 訪客選到公休日（週三）
+- **THEN** 時段區顯示「本日公休,暫無可訂時段」
+
+#### Scenario: 已滿時段不可選
+- **WHEN** 某時段為已滿
+- **THEN** 該時段以刪除線標示且不可選取
+
+### Requirement: 訂位人數
+第一步 SHALL 提供 1–8 位的人數選擇，預設為 2 位。
+
+#### Scenario: 選擇人數
+- **WHEN** 訪客點選某個人數
+- **THEN** 該人數為選中狀態，並帶入後續摘要
+
+### Requirement: 聯絡資料與必填驗證
+第二步 SHALL 收集姓名（必填）、手機（必填）、備註（選填）；姓名或手機為空時「下一步」SHALL 為禁用。
+
+#### Scenario: 必填未完成
+- **WHEN** 姓名或手機任一為空
+- **THEN** 「下一步」為禁用狀態
+
+#### Scenario: 必填完成
+- **WHEN** 姓名與手機皆已填寫
+- **THEN** 「下一步」變為可點
+
+### Requirement: 確認摘要與送出成功
+第三步 SHALL 顯示日期、時段、人數、姓名、手機、備註的摘要；送出後 SHALL 顯示訂位成功畫面。
+
+#### Scenario: 顯示摘要
+- **WHEN** 訪客進入第三步
+- **THEN** 顯示上述各欄位彙整，數值與前兩步輸入一致
+
+#### Scenario: 送出成功
+- **WHEN** 訪客按「確認送出」
+- **THEN** 顯示「訂位成功」成功畫面與完成按鈕
+
+### Requirement: Modal 開闔行為
+訂位 modal SHALL 可透過關閉鈕、按 ESC、或點擊背景關閉，並具備對話框無障礙屬性。
+
+#### Scenario: 多種方式關閉
+- **WHEN** 訪客按關閉鈕、ESC 鍵、或點擊 modal 背景
+- **THEN** 訂位 modal 關閉
+
+### Requirement: 前端原型範圍限制
+本能力目前 SHALL 僅為前端流程；送出 MUST NOT 實際傳送或寫入任何資料，可訂時段為示範用假資料。
+
+#### Scenario: 送出不傳資料
+- **WHEN** 訪客完成訂位並按「確認送出」
+- **THEN** 僅切換為成功畫面，不對任何後端或外部端點傳送資料
+
