@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32">
+  <rect width="32" height="32" rx="7" fill="#c58a3d"/>
+  <!-- 咖哩碗 -->
+  <path d="M6 16 h20 a10 10 0 0 1 -20 0 Z" fill="#fffdf7"/>
+  <ellipse cx="16" cy="16" rx="10" ry="2.4" fill="#f6efe2"/>
+  <!-- 蒸氣 -->
+  <path d="M13 9 q1.6 -2 0 -4 M19 9 q1.6 -2 0 -4" stroke="#fffdf7" stroke-width="1.4" fill="none" stroke-linecap="round" opacity="0.9"/>
+</svg>

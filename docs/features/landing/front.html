@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>咖哩食堂 カレー — 一碗溫暖的咖哩飯</title>
+<meta name="description" content="香料與時間慢燉出的家常咖哩飯，不用預拌塊，只用一整個下午的火候。從第一口暖到心底。">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<!-- Open Graph 社群預覽（og:image / og:url 需絕對網址，社群爬蟲不吃相對路徑） -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="咖哩食堂 カレー — 一碗溫暖的咖哩飯">
+<meta property="og:description" content="香料與時間慢燉出的家常咖哩飯，不用預拌塊，只用一整個下午的火候。">
+<meta property="og:url" content="https://smallwhite-chen.github.io/curry-diner/">
+<meta property="og:image" content="https://smallwhite-chen.github.io/curry-diner/assets/og-image.svg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;600;700&family=Noto+Sans+TC:wght@300;400;500;700&family=Zen+Kaku+Gothic+New:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{ --accent:#c58a3d; }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;background:#f6efe2;color:#3a2c20;font-family:"Noto Sans TC","Zen Kaku Gothic New",sans-serif;-webkit-font-smoothing:antialiased}
+  a{color:#3a2c20;text-decoration:none}
+  a:hover{color:var(--accent)}
+  ::selection{background:var(--accent);color:#fff}
+  @keyframes floatUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
+
+  /* image-slot placeholder — swap the inner content for a real <img> when you have photos */
+  .img-slot{position:absolute;inset:0;width:100%;height:100%;display:flex;align-items:center;justify-content:center;
+    background:
+      radial-gradient(120% 120% at 30% 20%, rgba(255,255,255,0.35), transparent 60%),
+      repeating-linear-gradient(135deg, rgba(58,44,32,0.045) 0 14px, transparent 14px 28px),
+      linear-gradient(155deg, #e7dcc4, #d9c9a6);
+    color:rgba(58,44,32,0.5);font-size:14px;letter-spacing:.12em;text-align:center;padding:20px}
+  .img-slot span{display:inline-flex;align-items:center;gap:10px}
+  .img-slot span::before{content:"";width:26px;height:1px;background:currentColor;opacity:.6}
+  .img-slot span::after{content:"";width:26px;height:1px;background:currentColor;opacity:.6}
+  .img-slot img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+
+  .nav{position:sticky;top:0;z-index:50;display:flex;align-items:center;justify-content:space-between;padding:18px 7vw;background:rgba(246,239,226,0.82);backdrop-filter:blur(10px);border-bottom:1px solid rgba(58,44,32,0.08)}
+  .brand-mark{font-family:'Shippori Mincho',serif;font-weight:700;font-size:22px;letter-spacing:.04em}
+  .brand-jp{font-family:'Zen Kaku Gothic New',sans-serif;font-size:12px;letter-spacing:.35em;color:var(--accent)}
+  .nav-links{display:flex;gap:34px;font-size:14px;font-weight:500;letter-spacing:.06em}
+
+  /* 行動版導覽（CSS-only）：checkbox 視覺隱藏但可鍵盤聚焦，label 為漢堡鈕 */
+  .nav-toggle{position:absolute;width:1px;height:1px;opacity:0;pointer-events:none}
+  .nav-burger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:8px;margin:-8px}
+  .nav-burger span{display:block;width:24px;height:2px;background:#3a2c20;border-radius:2px}
+  .nav-toggle:focus-visible + .nav-burger{outline:2px solid var(--accent);outline-offset:4px;border-radius:4px}
+  /* 全站鍵盤 focus 可見 */
+  a:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:3px}
+
+  .btn{display:inline-flex;align-items:center;gap:10px;padding:15px 30px;background:var(--accent);color:#fff;border-radius:999px;font-weight:500;font-size:15px;letter-spacing:.05em;transition:transform .2s ease,box-shadow .2s ease}
+  .btn:hover{color:#fff;transform:translateY(-2px);box-shadow:0 14px 26px -14px rgba(58,44,32,0.6)}
+
+  .kicker{font-family:'Zen Kaku Gothic New',sans-serif;font-size:12px;letter-spacing:.4em;color:var(--accent);margin:0 0 16px}
+  .h2{font-family:'Shippori Mincho',serif;font-weight:600;font-size:clamp(28px,3.4vw,42px);margin:0}
+
+  @media(max-width:820px){
+    .nav{flex-wrap:wrap}
+    .nav-burger{display:flex}
+    .nav-links{display:none;flex-direction:column;gap:18px;width:100%;padding:16px 0 4px}
+    .nav-toggle:checked ~ .nav-links{display:flex}
+    .hero{grid-template-columns:1fr !important;gap:6vh !important}
+    .types-grid{grid-template-columns:1fr !important}
+    .reviews-grid{grid-template-columns:1fr !important}
+    .footer-grid{grid-template-columns:1fr !important}
+  }
+</style>
+</head>
+<body>
+
+<div id="top" style="min-height:100vh;overflow-x:hidden">
+
+  <!-- NAV -->
+  <nav class="nav">
+    <a href="#top" style="display:flex;align-items:baseline;gap:10px">
+      <span class="brand-mark">咖哩食堂</span>
+      <span class="brand-jp">カレー</span>
+    </a>
+    <input type="checkbox" id="nav-toggle" class="nav-toggle" aria-label="開啟導覽選單">
+    <label for="nav-toggle" class="nav-burger" aria-hidden="true"><span></span><span></span><span></span></label>
+    <div class="nav-links">
+      <a href="#about">關於</a>
+      <a href="#types">種類</a>
+      <a href="#menu">菜單</a>
+      <a href="#reviews">評價</a>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <header class="hero" style="display:grid;grid-template-columns:1.05fr 0.95fr;gap:5vw;align-items:center;padding:7vh 7vw 9vh">
+    <div style="animation:floatUp .8s ease both">
+      <div style="display:flex;align-items:center;gap:14px;margin-bottom:26px">
+        <span style="width:38px;height:1px;background:var(--accent)"></span>
+        <span style="font-family:'Zen Kaku Gothic New',sans-serif;font-size:13px;letter-spacing:.28em;color:var(--accent)">じっくり煮込んだ手作りカレー</span>
+      </div>
+      <h1 style="font-family:'Shippori Mincho',serif;font-weight:700;font-size:clamp(44px,6vw,82px);line-height:1.12;margin:0 0 8px;letter-spacing:.02em">一碗溫暖的<br>咖哩飯</h1>
+      <p style="font-family:'Zen Kaku Gothic New',sans-serif;font-size:15px;letter-spacing:.3em;color:rgba(58,44,32,0.5);margin:0 0 30px">カ レ ー ラ イ ス</p>
+      <p style="font-size:17px;line-height:2;max-width:34ch;color:rgba(58,44,32,0.78);margin:0 0 38px">香料與時間慢燉出的家常滋味,<br>不用預拌塊,只用一整個下午的火候,<br>從第一口暖到心底。</p>
+      <div style="display:flex;gap:16px;align-items:center;flex-wrap:wrap">
+        <a href="#menu" class="btn">查看菜單 <span style="font-size:12px;opacity:.85">お品書き →</span></a>
+        <a href="#about" style="font-size:14px;font-weight:500;letter-spacing:.06em;border-bottom:1px solid rgba(58,44,32,0.25);padding-bottom:3px">關於我們</a>
+      </div>
+    </div>
+    <div style="position:relative;aspect-ratio:4/5;border-radius:20px;overflow:hidden;box-shadow:0 30px 60px -30px rgba(58,44,32,0.4);animation:floatUp 1s .15s ease both">
+      <div class="img-slot" role="img" aria-label="咖哩食堂招牌咖哩飯主視覺（暫為佔位）"><span>放上你的咖哩飯主照</span></div>
+    </div>
+  </header>
+
+  <!-- ABOUT -->
+  <section id="about" style="background:#efe6d4;padding:12vh 7vw">
+    <div style="max-width:760px;margin:0 auto;text-align:center">
+      <p class="kicker" style="letter-spacing:.4em">はじめに</p>
+      <h2 style="font-family:'Shippori Mincho',serif;font-weight:600;font-size:clamp(28px,3.4vw,42px);line-height:1.4;margin:0 0 34px">看似簡單,<br>卻最考驗火候的一道料理</h2>
+      <p style="font-size:17px;line-height:2.1;color:rgba(58,44,32,0.8);margin:0 0 22px">我們每天以十餘種香料現炒,慢火燉煮數小時,讓洋蔥的甜、香料的暖與肉的鮮徹底融合。醬汁濃稠得能拌著整碗白飯,一口接著一口。</p>
+      <p style="font-size:17px;line-height:2.1;color:rgba(58,44,32,0.8);margin:0">不用即溶咖哩塊,不加多餘添加物——好吃的秘訣,只是願意花時間。</p>
+      <div style="display:flex;justify-content:center;gap:56px;margin-top:56px;flex-wrap:wrap">
+        <div><div style="font-family:'Shippori Mincho',serif;font-size:40px;color:var(--accent)">12+</div><div style="font-size:13px;letter-spacing:.1em;color:rgba(58,44,32,0.6);margin-top:6px">種香料</div></div>
+        <div><div style="font-family:'Shippori Mincho',serif;font-size:40px;color:var(--accent)">6<span style="font-size:20px">小時</span></div><div style="font-size:13px;letter-spacing:.1em;color:rgba(58,44,32,0.6);margin-top:6px">慢火燉煮</div></div>
+        <div><div style="font-family:'Shippori Mincho',serif;font-size:40px;color:var(--accent)">0</div><div style="font-size:13px;letter-spacing:.1em;color:rgba(58,44,32,0.6);margin-top:6px">咖哩塊</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TYPES -->
+  <section id="types" style="padding:12vh 7vw">
+    <div style="text-align:center;margin-bottom:60px">
+      <p class="kicker">三つの味</p>
+      <h2 class="h2">三種風味,一種堅持</h2>
+    </div>
+    <div class="types-grid" style="display:grid;grid-template-columns:repeat(3,1fr);gap:32px;max-width:1100px;margin:0 auto">
+
+      <article style="display:flex;flex-direction:column">
+        <div style="position:relative;aspect-ratio:3/4;border-radius:16px;overflow:hidden;box-shadow:0 20px 40px -26px rgba(58,44,32,0.4)">
+          <div class="img-slot" role="img" aria-label="日式咖哩料理照片（暫為佔位）"><span>日式咖哩照片</span></div>
+        </div>
+        <div style="display:flex;align-items:baseline;gap:10px;margin:22px 0 10px">
+          <h3 style="font-family:'Shippori Mincho',serif;font-weight:600;font-size:23px;margin:0">日式咖哩</h3>
+          <span style="font-family:'Zen Kaku Gothic New',sans-serif;font-size:12px;letter-spacing:.2em;color:var(--accent)">和風カレー</span>
+        </div>
+        <p style="font-size:15px;line-height:1.9;color:rgba(58,44,32,0.72);margin:0">濃稠微甜、滑順順口,搭配酥脆炸物的經典國民口味。</p>
+      </article>
+
+      <article style="display:flex;flex-direction:column">
+        <div style="position:relative;aspect-ratio:3/4;border-radius:16px;overflow:hidden;box-shadow:0 20px 40px -26px rgba(58,44,32,0.4)">
+          <div class="img-slot" role="img" aria-label="印度咖哩料理照片（暫為佔位）"><span>印度咖哩照片</span></div>
+        </div>
+        <div style="display:flex;align-items:baseline;gap:10px;margin:22px 0 10px">
+          <h3 style="font-family:'Shippori Mincho',serif;font-weight:600;font-size:23px;margin:0">印度咖哩</h3>
+          <span style="font-family:'Zen Kaku Gothic New',sans-serif;font-size:12px;letter-spacing:.2em;color:var(--accent)">インドカレー</span>
+        </div>
+        <p style="font-size:15px;line-height:1.9;color:rgba(58,44,32,0.72);margin:0">香料奔放、層次分明,辛香四溢的濃烈風味,越吃越上癮。</p>
+      </article>
+
+      <article style="display:flex;flex-direction:column">
+        <div style="position:relative;aspect-ratio:3/4;border-radius:16px;overflow:hidden;box-shadow:0 20px 40px -26px rgba(58,44,32,0.4)">
+          <div class="img-slot" role="img" aria-label="泰式咖哩料理照片（暫為佔位）"><span>泰式咖哩照片</span></div>
+        </div>
+        <div style="display:flex;align-items:baseline;gap:10px;margin:22px 0 10px">
+          <h3 style="font-family:'Shippori Mincho',serif;font-weight:600;font-size:23px;margin:0">泰式咖哩</h3>
+          <span style="font-family:'Zen Kaku Gothic New',sans-serif;font-size:12px;letter-spacing:.2em;color:var(--accent)">タイカレー</span>
+        </div>
+        <p style="font-size:15px;line-height:1.9;color:rgba(58,44,32,0.72);margin:0">椰香溫潤、微辣回甘,帶著南洋香草氣息的清爽選擇。</p>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- MENU -->
+  <section id="menu" style="background:#3a2c20;color:#f6efe2;padding:12vh 7vw">
+    <div style="max-width:720px;margin:0 auto">
+      <div style="text-align:center;margin-bottom:56px">
+        <p class="kicker">お品書き</p>
+        <h2 class="h2" style="color:#f6efe2">菜單</h2>
+      </div>
+
+      <div style="display:flex;flex-direction:column;gap:26px">
+        <div style="display:flex;align-items:flex-end;gap:14px">
+          <div style="flex:none"><div style="font-size:19px;font-weight:500">招牌日式咖哩飯</div><div style="font-size:12px;letter-spacing:.15em;color:rgba(246,239,226,0.5);margin-top:4px">スタンダードカレー</div></div>
+          <div style="flex:1;border-bottom:1px dotted rgba(246,239,226,0.3);transform:translateY(-6px)"></div>
+          <div style="flex:none;font-family:'Shippori Mincho',serif;font-size:21px;color:var(--accent)">$180</div>
+        </div>
+        <div style="display:flex;align-items:flex-end;gap:14px">
+          <div style="flex:none"><div style="font-size:19px;font-weight:500">炸豬排咖哩飯</div><div style="font-size:12px;letter-spacing:.15em;color:rgba(246,239,226,0.5);margin-top:4px">カツカレー</div></div>
+          <div style="flex:1;border-bottom:1px dotted rgba(246,239,226,0.3);transform:translateY(-6px)"></div>
+          <div style="flex:none;font-family:'Shippori Mincho',serif;font-size:21px;color:var(--accent)">$240</div>
+        </div>
+        <div style="display:flex;align-items:flex-end;gap:14px">
+          <div style="flex:none"><div style="font-size:19px;font-weight:500">印度奶油雞咖哩</div><div style="font-size:12px;letter-spacing:.15em;color:rgba(246,239,226,0.5);margin-top:4px">バターチキンカレー</div></div>
+          <div style="flex:1;border-bottom:1px dotted rgba(246,239,226,0.3);transform:translateY(-6px)"></div>
+          <div style="flex:none;font-family:'Shippori Mincho',serif;font-size:21px;color:var(--accent)">$220</div>
+        </div>
+        <div style="display:flex;align-items:flex-end;gap:14px">
+          <div style="flex:none"><div style="font-size:19px;font-weight:500">泰式綠咖哩雞飯</div><div style="font-size:12px;letter-spacing:.15em;color:rgba(246,239,226,0.5);margin-top:4px">グリーンカレー</div></div>
+          <div style="flex:1;border-bottom:1px dotted rgba(246,239,226,0.3);transform:translateY(-6px)"></div>
+          <div style="flex:none;font-family:'Shippori Mincho',serif;font-size:21px;color:var(--accent)">$210</div>
+        </div>
+        <div style="display:flex;align-items:flex-end;gap:14px">
+          <div style="flex:none"><div style="font-size:19px;font-weight:500">野菜咖哩(全素)</div><div style="font-size:12px;letter-spacing:.15em;color:rgba(246,239,226,0.5);margin-top:4px">野菜カレー</div></div>
+          <div style="flex:1;border-bottom:1px dotted rgba(246,239,226,0.3);transform:translateY(-6px)"></div>
+          <div style="flex:none;font-family:'Shippori Mincho',serif;font-size:21px;color:var(--accent)">$170</div>
+        </div>
+        <div style="display:flex;align-items:flex-end;gap:14px">
+          <div style="flex:none"><div style="font-size:19px;font-weight:500">溫泉蛋(加點)</div><div style="font-size:12px;letter-spacing:.15em;color:rgba(246,239,226,0.5);margin-top:4px">温泉卵トッピング</div></div>
+          <div style="flex:1;border-bottom:1px dotted rgba(246,239,226,0.3);transform:translateY(-6px)"></div>
+          <div style="flex:none;font-family:'Shippori Mincho',serif;font-size:21px;color:var(--accent)">$30</div>
+        </div>
+      </div>
+
+      <p style="text-align:center;font-size:13px;letter-spacing:.1em;color:rgba(246,239,226,0.5);margin:48px 0 0">每份餐點皆附例湯與自製漬物・スープと漬物付き</p>
+    </div>
+  </section>
+
+  <!-- REVIEWS -->
+  <section id="reviews" style="padding:12vh 7vw">
+    <div style="text-align:center;margin-bottom:60px">
+      <p class="kicker">お客様の声</p>
+      <h2 class="h2">顧客這麼說</h2>
+    </div>
+    <div class="reviews-grid" style="display:grid;grid-template-columns:repeat(3,1fr);gap:28px;max-width:1080px;margin:0 auto">
+      <figure style="margin:0;background:#fffdf7;border:1px solid rgba(58,44,32,0.08);border-radius:16px;padding:34px 30px;display:flex;flex-direction:column;gap:20px">
+        <div style="font-family:'Shippori Mincho',serif;font-size:34px;line-height:1;color:var(--accent)">&ldquo;</div>
+        <blockquote style="margin:0;font-size:16px;line-height:1.9;color:rgba(58,44,32,0.85)">醬汁濃到可以拌著整碗吃光,炸豬排酥脆多汁,份量也很實在。</blockquote>
+        <figcaption style="font-size:13px;color:rgba(58,44,32,0.55);letter-spacing:.05em;margin-top:auto">— 陳小姐・常客</figcaption>
+      </figure>
+      <figure style="margin:0;background:#fffdf7;border:1px solid rgba(58,44,32,0.08);border-radius:16px;padding:34px 30px;display:flex;flex-direction:column;gap:20px">
+        <div style="font-family:'Shippori Mincho',serif;font-size:34px;line-height:1;color:var(--accent)">&ldquo;</div>
+        <blockquote style="margin:0;font-size:16px;line-height:1.9;color:rgba(58,44,32,0.85)">久違的家常味,像小時候媽媽在廚房慢慢煮的那一鍋,暖胃又暖心。</blockquote>
+        <figcaption style="font-size:13px;color:rgba(58,44,32,0.55);letter-spacing:.05em;margin-top:auto">— 林先生・附近上班族</figcaption>
+      </figure>
+      <figure style="margin:0;background:#fffdf7;border:1px solid rgba(58,44,32,0.08);border-radius:16px;padding:34px 30px;display:flex;flex-direction:column;gap:20px">
+        <div style="font-family:'Shippori Mincho',serif;font-size:34px;line-height:1;color:var(--accent)">&ldquo;</div>
+        <blockquote style="margin:0;font-size:16px;line-height:1.9;color:rgba(58,44,32,0.85)">香料味很足卻不搶戲,層次很細膩,吃完會一直想再來。</blockquote>
+        <figcaption style="font-size:13px;color:rgba(58,44,32,0.55);letter-spacing:.05em;margin-top:auto">— 佐藤さん・熟客</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer style="background:#efe6d4;padding:9vh 7vw 6vh;border-top:1px solid rgba(58,44,32,0.08)">
+    <div class="footer-grid" style="max-width:1080px;margin:0 auto;display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:40px;align-items:start">
+      <div>
+        <div style="display:flex;align-items:baseline;gap:10px;margin-bottom:16px">
+          <span style="font-family:'Shippori Mincho',serif;font-weight:700;font-size:24px">咖哩食堂</span>
+          <span style="font-family:'Zen Kaku Gothic New',sans-serif;font-size:12px;letter-spacing:.3em;color:var(--accent)">カレー</span>
+        </div>
+        <p style="font-size:15px;line-height:1.9;color:rgba(58,44,32,0.7);margin:0;max-width:32ch">用一整個下午的火候,煮一碗值得等待的咖哩飯。</p>
+      </div>
+      <div>
+        <div style="font-size:12px;letter-spacing:.2em;color:var(--accent);margin-bottom:14px">營業時間</div>
+        <div style="font-size:15px;line-height:2;color:rgba(58,44,32,0.8)">週一至週日<br>11:30 – 21:00<br>每週三公休</div>
+      </div>
+      <div>
+        <div style="font-size:12px;letter-spacing:.2em;color:var(--accent);margin-bottom:14px">來店資訊</div>
+        <div style="font-size:15px;line-height:2;color:rgba(58,44,32,0.8)">〔地址佔位〕<br>台北市・某某路 00 號<br>02-0000-0000</div>
+      </div>
+    </div>
+    <div style="max-width:1080px;margin:56px auto 0;padding-top:24px;border-top:1px solid rgba(58,44,32,0.1);font-size:12px;letter-spacing:.08em;color:rgba(58,44,32,0.45)">© 2026 咖哩食堂 カレー・本頁圖片為佔位圖,可自行替換。</div>
+  </footer>
+
+</div>
+
+</body>
+</html>

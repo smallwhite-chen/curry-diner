@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>咖哩食堂 前台頁 — 評審</title>
+<link rel="stylesheet" href="../../assets/review-shell.css">
+</head>
+<body>
+
+<iframe id="rk-frame" class="rk-frame" title="原型"></iframe>
+
+<div class="rk-bar">
+  <button class="rk-toggle" data-rk-open>▤ 檢視</button>
+  <div class="rk-group"></div>
+  <span class="rk-ver" id="rk-ver"></span>
+</div>
+
+<div class="sd-backdrop" data-sd-close></div>
+<aside class="sd-panel" id="sd-panel" role="dialog" aria-modal="true" aria-label="頁面規格" aria-hidden="true">
+  <div class="sd-head">
+    <h2 id="sd-title">頁面規格</h2>
+    <div class="sd-actions"><button class="sd-dl" data-sd-dl>⬇ 下載 .md</button><button class="sd-close" data-sd-close aria-label="關閉">×</button></div>
+  </div>
+  <div class="sd-body">
+
+    <div class="sd-spec" id="spec-front" data-name="咖哩食堂 前台頁（前台）">
+      <h2>目的</h2>
+      <p>「咖哩食堂」餐廳的品牌介紹落地頁：以慢燉手作咖哩為訴求，介紹品牌理念、三種咖哩風味、菜單與顧客評價，吸引顧客到店消費。頁面標題「咖哩食堂 カレー」、主要區塊（關於／種類／菜單／評價）與 CTA「查看菜單」皆可自 HTML 判讀。</p>
+      <ul>
+        <li><span class="todo">⚠️ 待確認</span>：本頁在整體行銷／營運流程中的定位（純形象頁，或需承接訂位／外送導流）。</li>
+        <li><span class="todo">⚠️ 待確認</span>：目標對象與成功指標（到店轉換、菜單點擊、停留時間…）。</li>
+      </ul>
+
+      <h2>使用者流程</h2>
+      <p>單頁式錨點瀏覽：頂部導覽（關於／種類／菜單／評價）與 CTA「查看菜單→#menu」「關於我們→#about」皆為頁內 <code>#anchor</code> 平滑捲動；頁面由上而下為 導覽 → Hero → 關於＋數據 → 三種咖哩 → 菜單 → 評價 → 頁尾。此判讀自 HTML 連結。</p>
+      <ul>
+        <li><span class="todo">⚠️ 待確認</span>：使用者從何處進入本頁（廣告、社群、Google 商家、QR Code…）。</li>
+        <li><span class="todo">⚠️ 待確認</span>：主要轉換動作為何——是否需接「線上訂位」「外送平台」「電話撥號」等跨頁／外部連結（目前 CTA 僅停在頁內菜單）。</li>
+        <li><span class="todo">⚠️ 待確認</span>：頁尾「來店資訊／地址」是否連地圖或導航。</li>
+      </ul>
+
+      <h2>元件／欄位規格</h2>
+      <p>本頁為內容展示頁，<strong>無使用者輸入欄位</strong>（無 input／select／textarea／表單），故不套九欄表格。以下為頁面非欄位元件：</p>
+      <ul>
+        <li>頂部導覽列（sticky）：品牌標記＋四個錨點連結（關於／種類／菜單／評價）。</li>
+        <li>Hero 區：主標「一碗溫暖的咖哩飯」、日文副標、簡介，兩顆 CTA（「查看菜單」主鈕、「關於我們」文字鈕）。</li>
+        <li>主視覺圖框 ×1（目前為佔位「放上你的咖哩飯主照」，待換真實照片）。</li>
+        <li>關於區數據 ×3：12+ 種香料／6 小時慢火燉煮／0 咖哩塊。</li>
+        <li>咖哩種類卡片 ×3（日式／印度／泰式），各含圖框佔位＋中日名稱＋描述。</li>
+        <li>菜單清單 ×6 項（品名／日文副名／價格，虛線引導線）：招牌日式 $180、炸豬排 $240、印度奶油雞 $220、泰式綠咖哩 $210、野菜（全素）$170、溫泉蛋（加點）$30。</li>
+        <li>顧客評價卡片 ×3（引言／內文／署名）。</li>
+        <li>頁尾：品牌簡介、營業時間、來店資訊（地址目前為佔位）、版權列。</li>
+      </ul>
+      <ul>
+        <li><span class="todo">⚠️ 待確認</span>：菜單品項與價格是否為最終內容、是否需要分類（主餐／加點／飲品）。</li>
+        <li><span class="todo">⚠️ 待確認</span>：四張圖框、頁尾地址／電話等佔位內容的實際素材來源。</li>
+      </ul>
+
+      <h2>互動狀態</h2>
+      <ul>
+        <li>導覽／文字連結 hover 變主題色（<code>a:hover</code>，已呈現）。</li>
+        <li>主 CTA 按鈕 hover 上浮＋陰影（<code>.btn:hover</code>，已呈現）。</li>
+        <li>文字選取 <code>::selection</code> 反白為主題色（已呈現）。</li>
+        <li>Hero 進場淡入上移動畫 <code>floatUp</code>（已呈現）。</li>
+        <li>響應式：視窗 ≤820px 時導覽連結隱藏、Hero／卡片／評價／頁尾格線收為單欄（已呈現）。</li>
+        <li><span class="todo">⚠️ 待確認</span>：圖片實際載入中／載入失敗的處理（目前皆為 CSS 佔位圖，無真實 <code>&lt;img&gt;</code>）。</li>
+        <li><span class="todo">⚠️ 待確認</span>：≤820px 導覽連結隱藏後，是否需要漢堡選單／行動版導覽（目前直接隱藏）。</li>
+      </ul>
+
+      <h2>邊界條件</h2>
+      <ul>
+        <li><span class="todo">⚠️ 待確認</span>：超長餐點名稱或多位數價格時，菜單虛線引導線的換行與對齊表現。</li>
+        <li><span class="todo">⚠️ 待確認</span>：菜單品項大幅增加時的排版（是否分區、分頁或捲動）。</li>
+        <li><span class="todo">⚠️ 待確認</span>：替換真實照片後，圖框 aspect-ratio 與裁切（object-fit:cover）是否符合預期構圖。</li>
+        <li><span class="todo">⚠️ 待確認</span>：極窄（&lt;360px）或極寬螢幕、平板橫直向的版面表現。</li>
+        <li><span class="todo">⚠️ 待確認</span>：Web Font（Shippori Mincho／Noto Sans TC／Zen Kaku）載入失敗或離線時的 fallback 字型與中日混排。</li>
+        <li><span class="todo">⚠️ 待確認</span>：無障礙（鍵盤焦點順序、對比度、圖片替代文字）需求。</li>
+      </ul>
+    </div>
+
+  </div>
+</aside>
+
+<script id="rk-config" type="application/json">
+{"version":"v1.0.1","defaultView":"front","views":[
+  {"id":"front","label":"前台","src":"front.html"}
+]}
+</script>
+
+<script src="../../assets/review-shell.js"></script>
+</body>
+</html>

@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630">
+  <rect width="1200" height="630" fill="#f6efe2"/>
+  <rect x="40" y="40" width="1120" height="550" rx="24" fill="none" stroke="rgba(58,44,32,0.12)" stroke-width="2"/>
+  <g font-family="'Shippori Mincho', 'Noto Serif TC', serif" fill="#3a2c20">
+    <text x="600" y="250" text-anchor="middle" font-size="120" font-weight="700" letter-spacing="6">咖哩食堂</text>
+    <text x="600" y="330" text-anchor="middle" font-size="34" letter-spacing="16" fill="#c58a3d" font-family="'Noto Sans TC', sans-serif">カ レ ー ラ イ ス</text>
+  </g>
+  <line x1="520" y1="380" x2="680" y2="380" stroke="#c58a3d" stroke-width="3"/>
+  <text x="600" y="450" text-anchor="middle" font-size="40" fill="rgba(58,44,32,0.8)" font-family="'Noto Sans TC', sans-serif">一碗溫暖的咖哩飯</text>
+  <text x="600" y="520" text-anchor="middle" font-size="24" fill="rgba(58,44,32,0.55)" letter-spacing="4" font-family="'Noto Sans TC', sans-serif">香料與時間慢燉出的家常滋味</text>
+</svg>

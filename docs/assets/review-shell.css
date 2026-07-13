@@ -1,0 +1,43 @@
+html,body{height:100%}
+body{margin:0;font-family:system-ui,"Noto Sans TC",sans-serif;color:#22302a}
+.rk-frame{position:fixed;inset:0;width:100%;height:100%;border:0;background:#fff}
+
+/* 切換列（右下角，可收合） */
+.rk-bar{position:fixed;right:20px;bottom:20px;z-index:50;display:flex;align-items:center;gap:4px;
+  background:#fff;border:1px solid #e0e8db;border-radius:999px;padding:4px 6px;box-shadow:0 4px 16px rgba(0,0,0,.14)}
+.rk-toggle{border:none;background:#2f7d5b;color:#fff;font-size:14px;padding:8px 16px;border-radius:999px;
+  cursor:pointer;display:inline-flex;align-items:center;gap:6px}
+.rk-toggle:hover{background:#276c4f}
+.rk-group{display:none;align-items:center;gap:4px}
+.rk-bar.rk-open .rk-toggle{display:none}
+.rk-bar.rk-open .rk-group{display:flex}
+.rk-seg{border:none;background:none;color:#4a5a50;font-size:14px;padding:7px 15px;border-radius:999px;cursor:pointer}
+.rk-seg:hover{background:#f0f5ee}
+.rk-seg.active{background:#2f7d5b;color:#fff}
+.rk-collapse{border:none;background:#f0f2ee;color:#5a6b60;font-size:16px;line-height:1;width:28px;height:28px;
+  border-radius:50%;cursor:pointer;margin-left:2px}
+.rk-collapse:hover{background:#e4e8e1}
+.rk-ver{font-size:12px;color:#6a7a70;padding:0 10px;white-space:nowrap}
+
+/* 規格抽屜 */
+.sd-backdrop{position:fixed;inset:0;z-index:55;background:rgba(20,30,25,.38);opacity:0;visibility:hidden;transition:opacity .25s,visibility .25s}
+.sd-panel{position:fixed;top:0;right:0;z-index:56;width:70vw;height:100%;background:#fff;box-shadow:-6px 0 24px rgba(0,0,0,.16);
+  transform:translateX(100%);transition:transform .28s ease;display:flex;flex-direction:column}
+.sd-open .sd-backdrop{opacity:1;visibility:visible}
+.sd-open .sd-panel{transform:translateX(0)}
+.sd-head{display:flex;align-items:center;justify-content:space-between;padding:16px 20px;border-bottom:1px solid #e7ece4}
+.sd-head h2{margin:0;font-size:16px;font-weight:600}
+.sd-actions{display:flex;align-items:center;gap:8px}
+.sd-dl{background:#2f7d5b;color:#fff;border:none;border-radius:6px;padding:5px 10px;font-size:13px;cursor:pointer}
+.sd-close{background:none;border:none;font-size:22px;line-height:1;cursor:pointer;color:#5a6b60;padding:4px}
+.sd-body{padding:20px;overflow-y:auto;line-height:1.7}
+.sd-spec{display:none}.sd-spec.active{display:block}
+.sd-body h2{font-size:15px;margin:20px 0 6px;padding-bottom:4px;border-bottom:1px solid #eef2ea}
+.sd-body h2:first-child{margin-top:0}
+.sd-body ul{margin:6px 0;padding-left:20px}.sd-body li{margin:3px 0}
+.sd-body .todo{color:#9a5b00;background:#fdf3e2;border-radius:4px;padding:1px 4px;font-size:13px}
+.sd-body .fieldspec{overflow-x:auto;margin:8px 0;border:1px solid #eef2ea;border-radius:6px}
+.sd-body table.fs{border-collapse:collapse;min-width:760px;font-size:12px}
+.sd-body table.fs th,.sd-body table.fs td{border:1px solid #eef2ea;padding:6px 8px;text-align:left;vertical-align:top}
+.sd-body table.fs th{background:#f5f8f3;color:#4a5a50;font-weight:500;white-space:nowrap}
+@media (max-width:600px){.sd-panel{width:100vw}}
