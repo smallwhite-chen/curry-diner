@@ -6,8 +6,9 @@ context: |
   技術：純靜態 HTML + CSS（無框架、無建置步驟）；Web Fonts（Shippori Mincho / Noto Sans TC / Zen Kaku Gothic New）。
   部署：GitHub Pages（repo smallwhite-chen/curry-diner，main/root），透過 github-deploy skill。
   評審：以 prototype-kit 打包成評審套件（切換列＋規格抽屜），版本號寫入 rk-config，目前 v1.0.1。
-  現況：頁面為內容展示頁，無使用者輸入欄位；圖片為 CSS 佔位；規格中有 15 條 ⚠️ 待確認（缺設計意圖）。
-  慣例：所有路徑相對化；品牌色只存在於原型內，評審外殼維持中性識別。
+  現況：形象頁＋線上訂位入口；訂位為多步驟 modal（vanilla JS，前端原型，送出不串後端、時段為假資料）。圖片為 CSS 佔位。
+  部署結構：單一 repo，原始碼在根目錄，建置產物在 docs/（Pages 從 main /docs 上線）。
+  慣例：所有路徑相對化（OG 例外用絕對網址）；品牌色只存在於原型內，評審外殼維持中性識別。
 
 # Per-artifact rules (optional)
 # Add custom rules for specific artifacts.
